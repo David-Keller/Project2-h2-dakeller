@@ -1,4 +1,4 @@
-import flask_sqlalchemy, app
+import flask_sqlalchemy, app, os
 #app.app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://potato:potatosareawesome@localhost/postgres'
 app.app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv('DATABASE_URL')
 db = flask_sqlalchemy.SQLAlchemy(app.app)
