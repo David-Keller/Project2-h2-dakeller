@@ -7,16 +7,16 @@ import flask_sqlalchemy
 app = flask.Flask(__name__)
 socketio = flask_socketio.SocketIO(app)
 
-#import model
+import model
 
 
 @app.route('/')
 def hello():
-    messages = model.Message.query.all()
-    html = ['<li>' + m.text + '</li>' for m in messages]
-    return '<ul>' + ''.join(html) + '</ul>'
+#    messages = model.Message.query.all()
+#    html = ['<li>' + m.text + '</li>' for m in messages]
+#    return '<ul>' + ''.join(html) + '</ul>'
 
-#    return flask.render_template('index.html')
+    return flask.render_template('index.html')
 
 @socketio.on('connect')
 def on_connect():
