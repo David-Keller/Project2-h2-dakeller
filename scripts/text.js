@@ -16,10 +16,20 @@ export class NameForm extends React.Component {
 
   handleSubmit(event) {
     //alert('A name was submitted: ' + this.state.value);
-    Socket.emit('text', {
-            'value': this.state.value
-        })
     event.preventDefault();
+    FB.getLoginStatus((response) => {
+        if (response.status == 'connected') {
+            Socket.emit('message', {
+                    'facebook_user_token':
+              response.authResponse.accessToken,
+              'value': this.state.value
+            });
+      }
+    });
+//    Socket.emit('text', {
+//            'value': this.state.value
+//        })
+    
   }
 
   render() {
