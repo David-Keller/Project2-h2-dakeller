@@ -7,7 +7,7 @@ import requests
 
 app = flask.Flask(__name__)
 socketio = flask_socketio.SocketIO(app)
-num_of_users = []
+#num_of_users = []
 import model
 
 
@@ -41,14 +41,14 @@ def on_connect():
     
     socketio.emit('messages', {'value':dat})
     print 'Someone connected!'
-    num_of_users.append(1)
+    #num_of_users.append(1)
     
 
 @socketio.on('disconnect')
 def on_disconnect():
     print 'Someone disconnected!'
-    if(num_of_users.count() > 0 ):
-        num_of_users.pop()
+    #if(num_of_users.count() > 0 ):
+    #    num_of_users.pop()
 
 
 @socketio.on('new number')
