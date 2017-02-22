@@ -47,7 +47,8 @@ def on_connect():
 @socketio.on('disconnect')
 def on_disconnect():
     print 'Someone disconnected!'
-    num_of_users.pop()
+    if(num_of_users.count() > 0 ):
+        num_of_users.pop()
 
 
 @socketio.on('new number')
