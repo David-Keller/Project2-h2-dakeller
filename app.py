@@ -29,17 +29,17 @@ all_numbers = []
 @socketio.on('connect')
 def on_connect():
     
-    socketio.emit('all numbers', {
-    'numbers': all_numbers
-    })
+  #  socketio.emit('all numbers', {
+  #  'numbers': all_numbers
+  #  })
     
-    messages = model.Message.query.all()
-    dat = []
-    for m in messages:
-        dat.append(m.text)
+  #  messages = model.Message.query.all()
+  #  dat = []
+  #  for m in messages:
+  #      dat.append(m.text)
     #print(messages)
     
-    socketio.emit('messages', {'value':dat})
+  #  socketio.emit('messages', {'value':dat})
     print 'Someone connected!'
     #num_of_users.append(1)
     
