@@ -88,17 +88,15 @@ def message(data):
     
     if(data['value'].find("!!", end=2)>0):
         print("found bot command")
-    
-    
-    message = model.Message(json['name'] + ": " +data['value'])
-    model.db.session.add(message)
-    model.db.session.commit();
-    
-    messages = model.Message.query.all()
-    dat = []
-    for m in messages:
-        dat.append(m.text)
-    print(messages)
+    else:
+        message = model.Message(json['name'] + ": " +data['value'])
+        model.db.session.add(message)
+        model.db.session.commit();
+        messages = model.Message.query.all()
+        dat = []
+        for m in messages:
+            dat.append(m.text)
+    #print(messages)
     
     socketio.emit('messages', {'value':dat})
     
