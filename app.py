@@ -127,7 +127,7 @@ def message(data):
             dat = []
             for m in messages:
                 dat.append(m.text)
-            dat.append("BOT: The time is: " + str(datetime.now()))
+            dat.append("BOT: The date and time are: " + str(datetime.now()))
             socketio.emit('messages', {'value':dat})
             return 
 ################### say command ####################            
