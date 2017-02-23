@@ -13147,7 +13147,13 @@ var Content = exports.Content = function (_React$Component) {
                     n
                 );
             });
-            var num = this.state.user_num;
+            var num = this.state.user_num.map(function (n, index) {
+                return React.createElement(
+                    'li',
+                    { key: index },
+                    n
+                );
+            });
             return React.createElement(
                 'div',
                 null,

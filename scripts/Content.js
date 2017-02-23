@@ -59,12 +59,16 @@ export class Content extends React.Component {
         let text = this.state.text.map(
             (n,index) => <li key ={index}>{n}</li>
             );
-        let message = this.state.value.map((
-            n,index) => <li key = {index}>
+        let message = this.state.value.map(
+            (n,index) => <li key = {index}>
             {n}
             </li>
             );
-        let num = this.state.user_num;
+        let num = this.state.user_num.map(
+                (n,index) => <li key = {index}>
+                {n}
+                </li>
+            );
         return (
             <div>
 
