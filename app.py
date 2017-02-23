@@ -25,30 +25,39 @@ all_numbers = []
 
 
 
-
+num_of_users = []
 @socketio.on('connect')
 def on_connect():
-    
-    socketio.emit('all numbers', {
-    'numbers': all_numbers
-    })
-    
     messages = model.Message.query.all()
     dat = []
     for m in messages:
         dat.append(m.text)
-    #print(messages)
-    
+    dat.append("BOT: new user connected")
     socketio.emit('messages', {'value':dat})
     print 'Someone connected!'
-    #num_of_users.append(1)
+    
+    num_of_users.append(0) #kept running into number not set errors and this was the only way i could fix it but its a bad fix!!!
+    num_of_users[0] = num_of_users[0] + 1
+    socketio.emit('num_users', {'num':num_of_users[0]})
+#    socketio.emit('all numbers', {
+#    'numbers': all_numbers
+#    })
     
 
 @socketio.on('disconnect')
 def on_disconnect():
+    messages = model.Message.query.all()
+    dat = []
+    for m in messages:
+        dat.append(m.text)
+    dat.append("BOT: new user connected")
+    socketio.emit('messages', {'value':dat})
     print 'Someone disconnected!'
-    #if(num_of_users.count() > 0 ):
-    #    num_of_users.pop()
+    if(num_of_users.count > 0 ):
+        if(num_of_users[0]>0):
+            num_of_users[0] = num_of_users[0] - 1
+            socketio.emit('num_users', {'num':num_of_users[0]})
+
 
 
 @socketio.on('new number')
@@ -57,13 +66,11 @@ def on_new_number(data):
     'https://graph.facebook.com/v2.8/me?fields=id%2Cname%2Cpicture&access_token=' + data['facebook_user_token'])
     json = response.json()
 
-
     all_numbers.append({
     'name': json['name'],
     'picture': json['picture']['data']['url'],
     'number': data['number']
     })
-
     
     all_numbers.append(data['number'])
     print(data['facebook_user_token'])
