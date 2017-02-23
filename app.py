@@ -95,7 +95,7 @@ def message(data):
             for m in messages:
                 dat.append(m.text)
             dat.append("BOT: valid commands are help, about, say, com1, com2")
-        
+            
         
         print("found bot command")
     else:
