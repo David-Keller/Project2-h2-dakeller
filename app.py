@@ -3,6 +3,8 @@ import flask
 import flask_socketio
 import flask_sqlalchemy
 import requests
+from datetime import datetime
+
 
 
 app = flask.Flask(__name__)
@@ -88,7 +90,8 @@ def message(data):
     
     if(data['value'].find("!!",0,2)==0):
         evaluate = data['value'].split(' ', 2)
-        # this should not be done though else loops but its the fastest way to make them
+        # this should not be done though if loops but its the fastest way to make them
+        # this should be made into another function possably put into its own modual
 ################## help command ####################     
 #        print(evaluate[1].find("help"))
 #        print(evaluate[1])
@@ -97,7 +100,7 @@ def message(data):
             dat = []
             for m in messages:
                 dat.append(m.text)
-            dat.append("BOT: Valid commands are: help, about, say, com1, com2")
+            dat.append("BOT: Valid commands are: help, about, say, RAWR, com2")
             socketio.emit('messages', {'value':dat})
             return 
 ################### about command ####################       
@@ -107,6 +110,24 @@ def message(data):
             for m in messages:
                 dat.append(m.text)
             dat.append("BOT: This room is for DINOs only!!")
+            socketio.emit('messages', {'value':dat})
+            return 
+#################### RAWR command #####################
+        if(evaluate[1].find("RAWR")==0):
+            messages = model.Message.query.all()
+            dat = []
+            for m in messages:
+                dat.append(m.text)
+            dat.append("BOT: I'm a DINO RAWWWWR!!!!")
+            socketio.emit('messages', {'value':dat})
+            return 
+#################### time command ########################
+        if(evaluate[1].find("about")==0):
+            messages = model.Message.query.all()
+            dat = []
+            for m in messages:
+                dat.append(m.text)
+            dat.append("BOT: The time is: " + str(datetime.now()))
             socketio.emit('messages', {'value':dat})
             return 
 ################### say command ####################            
