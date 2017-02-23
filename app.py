@@ -39,7 +39,7 @@ def on_connect():
     num_of_users.append(0) #kept running into number not set errors and this was the only way i could fix it but its a bad fix!!!
     num_of_users[0] = num_of_users[0] + 1
     socketio.emit('num_users', {'num':num_of_users[0]})
-    print("number of users" str(num_of_users[0]))
+    print("number of users" + str(num_of_users[0]))
 #    socketio.emit('all numbers', {
 #    'numbers': all_numbers
 #    })
