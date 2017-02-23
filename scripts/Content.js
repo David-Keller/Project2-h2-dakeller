@@ -64,7 +64,11 @@ export class Content extends React.Component {
             {n}
             </li>
             );
-        let num = this.state.user_num;
+        let num = this.state.user_num.map(
+                (n,index) => <li key = {index}>
+                {n}
+                </li>
+            );
         return (
             <div>
 
