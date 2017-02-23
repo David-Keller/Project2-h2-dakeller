@@ -86,16 +86,16 @@ def message(data):
     'https://graph.facebook.com/v2.8/me?fields=id%2Cname%2Cpicture&access_token=' + data['facebook_user_token'])
     json = response.json()
     
-    print(data['value'].find("!!",0,2))
-#        print("found bot command")
-#    else:
-#        message = model.Message(json['name'] + ": " +data['value'])
-#        model.db.session.add(message)
-#        model.db.session.commit();
-#        messages = model.Message.query.all()
-#        dat = []
-#        for m in messages:
-#            dat.append(m.text)
+    if(data['value'].find("!!",0,2)>=0):
+        print("found bot command")
+    else:
+        message = model.Message(json['name'] + ": " +data['value'])
+        model.db.session.add(message)
+        model.db.session.commit();
+        messages = model.Message.query.all()
+        dat = []
+        for m in messages:
+            dat.append(m.text)
     #print(messages)
     
     socketio.emit('messages', {'value':dat})
