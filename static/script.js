@@ -13107,7 +13107,7 @@ var Content = exports.Content = function (_React$Component) {
             });
             _Socket.Socket.on('num_users', function (data) {
                 _this2.setState({
-                    'num_users': data['num']
+                    'user_num': data['num']
                 });
             });
         }

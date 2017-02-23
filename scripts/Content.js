@@ -34,7 +34,7 @@ export class Content extends React.Component {
         })
         Socket.on('num_users',(data)=>{
             this.setState({
-                'num_users':data['num']
+                'user_num':data['num']
             });
         })
         
