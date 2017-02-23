@@ -13105,7 +13105,7 @@ var Content = exports.Content = function (_React$Component) {
                     'value': data['value']
                 });
             });
-            _Socket.Socket.on('num_of_users', function (data) {
+            _Socket.Socket.on('num_users', function (data) {
                 _this2.setState({
                     'num_users': data['num']
                 });
@@ -13147,13 +13147,7 @@ var Content = exports.Content = function (_React$Component) {
                     n
                 );
             });
-            var num = this.state.user_num.map(function (n, index) {
-                return React.createElement(
-                    'li',
-                    { key: index },
-                    n
-                );
-            });
+            var num = this.state.user_num;
             return React.createElement(
                 'div',
                 null,

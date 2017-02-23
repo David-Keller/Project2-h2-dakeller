@@ -32,7 +32,7 @@ export class Content extends React.Component {
                 'value':data['value']
             });
         })
-        Socket.on('num_of_users',(data)=>{
+        Socket.on('num_users',(data)=>{
             this.setState({
                 'num_users':data['num']
             });
@@ -64,11 +64,7 @@ export class Content extends React.Component {
             {n}
             </li>
             );
-        let num = this.state.user_num.map(
-                (n,index) => <li key = {index}>
-                {n}
-                </li>
-            );
+        let num = this.state.user_num;
         return (
             <div>
 
