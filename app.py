@@ -97,16 +97,18 @@ def message(data):
             dat = []
             for m in messages:
                 dat.append(m.text)
-            dat.append("BOT: valid commands are: help, about, say, com1, com2")
+            dat.append("BOT: Valid commands are: help, about, say, com1, com2")
             socketio.emit('messages', {'value':dat})
+            return 
 ################### about command ####################       
         if(evaluate[1].find("about")==0):
             messages = model.Message.query.all()
             dat = []
             for m in messages:
                 dat.append(m.text)
-            dat.append("BOT: valid commands are help, about, say, com1, com2")
+            dat.append("BOT: This room is for DINOs only!!")
             socketio.emit('messages', {'value':dat})
+            return 
 ################### say command ####################            
         if(evaluate[1].find("say")==0):
             messages = model.Message.query.all()
@@ -114,6 +116,14 @@ def message(data):
             for m in messages:
                 dat.append(m.text)
             dat.append("BOT: " + evaluate[2])
+            socketio.emit('messages', {'value':dat})
+            return
+        else:
+            messages = model.Message.query.all()
+            dat = []
+            for m in messages:
+                dat.append(m.text)
+            dat.append("BOT: " + evaluate[1] +" is not a recognized command")
             socketio.emit('messages', {'value':dat})
             
             

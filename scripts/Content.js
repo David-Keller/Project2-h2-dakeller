@@ -71,6 +71,7 @@ export class Content extends React.Component {
             );
         return (
             <div>
+            <Image> img="https://www.omnycontent.com/d/clips/0914dce6-85b4-4825-bcf4-a513005d374d/07e9c90d-6021-4325-a9f3-a514001d92a6/c3277bc7-f587-464a-9933-a53a00c84b3c/image.jpg?t=1445851979&download=True&utm_source=OmnyFM&size=Large"
 
             
              <h1>Wellcome to the message board :-)</h1>
@@ -86,6 +87,7 @@ export class Content extends React.Component {
                 <ul>{numbers} {message}</ul>
                 <Button />
                 <NameForm />
+                </Image>
             </div>
         );
     }
