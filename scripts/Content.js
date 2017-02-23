@@ -32,6 +32,7 @@ export class Content extends React.Component {
                 'value':data['value']
             });
         })
+        console.log("resistring num_users")
         Socket.on('num_users',(data)=>{ // dont know why this isnt working
             this.setState({
                 'user_num':data['num']

@@ -13105,6 +13105,7 @@ var Content = exports.Content = function (_React$Component) {
                     'value': data['value']
                 });
             });
+            console.log("resistring num_users");
             _Socket.Socket.on('num_users', function (data) {
                 // dont know why this isnt working
                 _this2.setState({
