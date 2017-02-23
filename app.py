@@ -90,13 +90,14 @@ def message(data):
         evaluate = data['value'].split(' ', 2)
         # this should not be done though else loops but its the fastest way to make them
 ################## help command ####################     
-        print(evaluate[1].find("help"))
+#        print(evaluate[1].find("help"))
+#        print(evaluate[1])
         if(evaluate[1].find("help")==0):
             messages = model.Message.query.all()
             dat = []
             for m in messages:
                 dat.append(m.text)
-            dat.append("BOT: valid commands are help, about, say, com1, com2")
+            dat.append("BOT: valid commands are: help, about, say, com1, com2")
             socketio.emit('messages', {'value':dat})
 ################### about command ####################       
         if(evaluate[1].find("about")==0):
@@ -105,6 +106,14 @@ def message(data):
             for m in messages:
                 dat.append(m.text)
             dat.append("BOT: valid commands are help, about, say, com1, com2")
+            socketio.emit('messages', {'value':dat})
+################### say command ####################            
+        if(evaluate[1].find("say")==0):
+            messages = model.Message.query.all()
+            dat = []
+            for m in messages:
+                dat.append(m.text)
+            dat.append("BOT: " + evaluate[2])
             socketio.emit('messages', {'value':dat})
             
             
