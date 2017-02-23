@@ -122,7 +122,7 @@ def message(data):
             socketio.emit('messages', {'value':dat})
             return 
 #################### time command ########################
-        if(evaluate[1].find("about")==0):
+        if(evaluate[1].find("time")==0):
             messages = model.Message.query.all()
             dat = []
             for m in messages:
