@@ -13106,9 +13106,11 @@ var Content = exports.Content = function (_React$Component) {
                 });
             });
             _Socket.Socket.on('num_users', function (data) {
+                // dont know why this isnt working
                 _this2.setState({
                     'user_num': data['num']
                 });
+                console.log("got num_users: ", data);
             });
         }
 
@@ -13129,10 +13131,6 @@ var Content = exports.Content = function (_React$Component) {
                     n.number
                 );
             });
-
-            //        let numbers = this.state.numbers.map(
-            //            (n, index) => <li key={index}>{n}</li>
-            //        );
             var text = this.state.text.map(function (n, index) {
                 return React.createElement(
                     'li',

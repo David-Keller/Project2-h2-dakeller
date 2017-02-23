@@ -32,10 +32,11 @@ export class Content extends React.Component {
                 'value':data['value']
             });
         })
-        Socket.on('num_users',(data)=>{
+        Socket.on('num_users',(data)=>{ // dont know why this isnt working
             this.setState({
                 'user_num':data['num']
             });
+            console.log("got num_users: ", data)
         })
         
     }
@@ -52,10 +53,6 @@ export class Content extends React.Component {
             {n.name}: {n.number}
             </li>
             );
-
-//        let numbers = this.state.numbers.map(
-//            (n, index) => <li key={index}>{n}</li>
-//        );
         let text = this.state.text.map(
             (n,index) => <li key ={index}>{n}</li>
             );
