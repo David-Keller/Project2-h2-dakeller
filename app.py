@@ -96,9 +96,8 @@ def message(data):
         dat = []
         for m in messages:
             dat.append(m.text)
-    #print(messages)
-    
-    socketio.emit('messages', {'value':dat})
+        #print(messages)
+        socketio.emit('messages', {'value':dat})
     
     
     
