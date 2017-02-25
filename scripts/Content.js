@@ -34,9 +34,9 @@ export class Content extends React.Component {
         })
         console.log("resistring num_users")
         Socket.on('num_users',(data)=>{ // dont know why this isnt working
-            this.setState({
+          this.setState({
                 'user_num':data['num']
-            });
+             });
             console.log("got num_users: ", data)
         })
         
@@ -63,13 +63,12 @@ export class Content extends React.Component {
             {n}
             </li>
             );
-        let num = this.state.user_num.map(
-                (n,index) => <li key = {index}>
-                {n}
-                </li>
-            );
+        let num = this.state.user_num;
         return (
             <div>
+                <Image>
+                src = {"https://www.omnycontent.com/d/clips/0914dce6-85b4-4825-bcf4-a513005d374d/07e9c90d-6021-4325-a9f3-a514001d92a6/c3277bc7-f587-464a-9933-a53a00c84b3c/image.jpg?t=1445851979&download=True&utm_source=OmnyFM&size=Large"}
+                </Image>
 
             
              <h1>Wellcome to the message board :-)</h1>
