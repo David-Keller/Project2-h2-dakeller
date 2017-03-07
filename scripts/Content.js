@@ -3,6 +3,7 @@ import * as React from 'react';
 import { Button } from './Button';
 import { Socket } from './Socket';
 import { NameForm } from './text';
+import { Message } from './Message';
 
 
 export class Content extends React.Component {
@@ -47,8 +48,6 @@ export class Content extends React.Component {
 
 
     render() {
-        
-        
          let numbers = this.state.numbers.map((n, index) =>
             <li key={index}>
             <img src={n.picture} />
@@ -60,15 +59,13 @@ export class Content extends React.Component {
             );
         let message = this.state.value.map(
             (n,index) => <li key = {index}>
-            {n}
+            <Message name = {n} />
             </li>
             );
         let num = this.state.user_num;
         return (
             <div>
-                <Image>
-                src = {"https://www.omnycontent.com/d/clips/0914dce6-85b4-4825-bcf4-a513005d374d/07e9c90d-6021-4325-a9f3-a514001d92a6/c3277bc7-f587-464a-9933-a53a00c84b3c/image.jpg?t=1445851979&download=True&utm_source=OmnyFM&size=Large"}
-                </Image>
+
 
             
              <h1>Wellcome to the message board :-)</h1>
@@ -81,7 +78,8 @@ export class Content extends React.Component {
                 </div>
                 <h1>Number of users: {num}</h1>
                 <h1>Messages so far!</h1>
-                <ul>{numbers} {message}</ul>
+                <Message name="https://www.wikipedia.org/portal/wikipedia.org/assets/img/Wikipedia-logo-v2.png"/>
+                <ul>{message}</ul>
                 <Button />
                 <NameForm />
                 

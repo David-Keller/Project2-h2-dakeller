@@ -45,7 +45,7 @@ def on_connect():
 #    socketio.emit('all numbers', {
 #    'numbers': all_numbers
 #    })
-    
+#@socketio.on('')
 
 @socketio.on('disconnect')
 def on_disconnect():
@@ -177,4 +177,63 @@ if __name__ == '__main__':
         port=int(os.getenv('PORT', 8080)),
         debug=True
     )
+    
+    
 
+    
+def BOT(data):
+    if(data['value'].find("!!",0,2)==0): #this line needs to be moved to outside the function and should call the function if true
+        evaluate = data['value'].split(' ', 2)
+################## help command ####################     
+        if(evaluate[1].find("help")==0):
+            # messages = model.Message.query.all()
+            # dat = []
+            # for m in messages:
+            #     dat.append(m.text)
+            #dat.append("BOT: Valid commands are: help, about, say, RAWR, com2")
+            #socketio.emit('messages', {'value':dat})
+            return "BOT: Valid commands are: help, about, say, RAWR, com2"
+################### about command ####################       
+        if(evaluate[1].find("about")==0):
+            # messages = model.Message.query.all()
+            # dat = []
+            # for m in messages:
+            #     dat.append(m.text)
+            # dat.append()
+            # socketio.emit('messages', {'value':dat})
+            return "BOT: This room is for DINOs only!!"
+#################### RAWR command #####################
+        if(evaluate[1].find("RAWR")==0):
+            # messages = model.Message.query.all()
+            # dat = []
+            # for m in messages:
+            #     dat.append(m.text)
+            # dat.append("BOT: I'm a DINO RAWWWWR!!!!")
+            # socketio.emit('messages', {'value':dat})
+            return "BOT: I'm a DINO RAWWWWR!!!!"
+#################### time command ########################
+        if(evaluate[1].find("time")==0):
+            # messages = model.Message.query.all()
+            # dat = []
+            # for m in messages:
+            #     dat.append(m.text)
+            # dat.append("BOT: The date and time are: " + str(datetime.now()))
+            # socketio.emit('messages', {'value':dat})
+            return "BOT: The date and time are: " + str(datetime.now())
+################### say command ####################            
+        if(evaluate[1].find("say")==0):
+            # messages = model.Message.query.all()
+            # dat = []
+            # for m in messages:
+            #     dat.append(m.text)
+            # dat.append("BOT: " + evaluate[2])
+            # socketio.emit('messages', {'value':dat})
+            return "BOT: " + evaluate[2]
+        else:
+            # messages = model.Message.query.all()
+            # dat = []
+            # for m in messages:
+            #     dat.append(m.text)
+            # dat.append("BOT: " + evaluate[1] +" is not a recognized command")
+            # socketio.emit('messages', {'value':dat})
+            return "BOT: " + evaluate[1] +" is not a recognized command"
